@@ -1,0 +1,85 @@
+//Created by Sandra Suarez on 04/06/2016.
+
+extends ../template
+block content
+    .center.color-back(ng-controller="VentasController",layout="column", layout-align="center center", ng-cloak)
+        md-content.width-all(style="height:100%", layout-padding, layout="column")
+            h1 Registro De Ventas.
+                div(layout="row", layout-sm="colunm", layout-align="center" flex)
+                    md-input-container.md-block
+                        label Filtrar
+                        input(type='text', ng-model='filtro')
+                        md-icon.md-primary search
+
+                div(layout="row", layout-sm="colunm", layout-align="center" flex)
+                    md-input-container
+                        md-select(style="min-width:300px;", ng-model='selectedCategory')
+                            md-option(ng-value='tipo.value', ng-repeat='tipo in categories') {{ tipo.name }}
+
+            div(ng-show="selectedCategory =='all' || selectedCategory == 'almuerzos'")
+                h2 Almuerzos
+                md-grid-list.center-text(md-cols='1', md-cols-sm='2', md-cols-md='4', md-cols-gt-md='6', md-row-height-gt-md='1:1', md-row-height='4:3', md-gutter='12px', md-gutter-gt-sm='8px')
+                    md-grid-tile(md-whiteframe="5",ng-repeat="almuerzo in almuerzos | filter:filtro")
+
+                        img(ng-src='{{urlImagen}}{{almuerzo.imagen}}', alt='img', style="all: inherit; width: 100%;")
+
+                        md-grid-tile-header
+                            p {{ almuerzo.nombreTipoAlmuerzo }} - {{almuerzo.acompanamiento}}
+
+                        md-grid-tile-footer
+                            h1.precio.text-center {{almuerzo.precio}}
+                            div.cantidad
+                                input.center-text.bold(style="font-weight",type='number', step="1",min='1', ng-model='almuerzo.cantidad' value="1", ng-change='changeCantidad(almuerzo.idAlmuerzo, almuerzo.cantidad, almuerzo.precio)')
+                                md-checkbox(ng-click='addAlmuerzos(almuerzo)', ng-model='almuerzo.active')
+
+            div(ng-show="selectedCategory =='all' || selectedCategory == 'bebidas'")
+                h2 Bebidas
+                md-grid-list.center-text(md-cols='1', md-cols-sm='2', md-cols-md='4', md-cols-gt-md='6', md-row-height-gt-md='1:1', md-row-height='4:3', md-gutter='12px', md-gutter-gt-sm='8px')
+                    md-grid-tile(md-whiteframe="5",ng-repeat="bebida in bebidas | filter:filtro")
+
+                        img(ng-src='{{urlImagen}}{{bebida.imagen}}', alt='img', style="all: inherit; width: 100%;")
+
+                        md-grid-tile-header
+                            p {{ bebida.nombreBebida }}
+
+                        md-grid-tile-footer
+                            h1.precio.text-center {{bebida.precio}}
+                            div.cantidad
+                                input.center-text.bold(style="font-weight",type='number', step="1",min='1', value="1", ng-model='bebida.cantidad', ng-change='changeCantidad(bebida.idBebida, bebida.cantidad, bebida.precio)')
+                                md-checkbox(ng-click='addBebidas(bebida)', ng-model='bebida.active')
+
+            div(ng-show = "selectedCategory =='all' || selectedCategory == 'desayunos'")
+                h2 Desayunos
+                md-grid-list.center-text(md-cols='1', md-cols-sm='2', md-cols-md='4', md-cols-gt-md='6', md-row-height-gt-md='1:1', md-row-height='4:3', md-gutter='12px', md-gutter-gt-sm='8px')
+                    md-grid-tile(md-whiteframe="5",ng-repeat="desayuno in desayunos | filter:filtro")
+
+                        img(ng-src='{{urlImagen}}{{desayuno.imagen}}', alt='img', style="all: inherit; width: 100%;")
+
+                        md-grid-tile-header
+                            p {{ desayuno.nombreDesayuno }}
+
+                        md-grid-tile-footer
+                            h1.precio.text-center {{desayuno.precio}}
+                            div.cantidad
+                                input.center-text.bold(style="font-weight",type='number', step="1",min='1', value="1", ng-model='desayuno.cantidad', ng-change='changeCantidad(desayuno.idDesayuni, desayuno.cantidad, desayuno.precio)')
+                                md-checkbox(ng-click='addDesayunos(desayuno)', ng-model='desayuno.active')
+
+            div(ng-show="selectedCategory =='all' || selectedCategory == 'porciones'")
+                h2 Porciones
+                md-grid-list.center-text(md-cols='1', md-cols-sm='2', md-cols-md='4', md-cols-gt-md='6', md-row-height-gt-md='1:1', md-row-height='4:3', md-gutter='12px', md-gutter-gt-sm='8px')
+                    md-grid-tile(md-whiteframe="5",ng-repeat="porcion in porciones | filter:filtro")
+
+                        img(ng-src='{{urlImagen}}{{porcion.imagen}}', alt='img', style="all: inherit; width: 100%;")
+
+                        md-grid-tile-header
+                            p {{ porcion.nombrePorcion }}
+
+                        md-grid-tile-footer
+                            h1.precio.text-center {{ porcion.precio }}
+                            div.cantidad
+                                input.center-text.bold(type='number', step="1",min='1', value="1", ng-model='porcion.cantidad', ng-change='changeCantidad(porcion.idPorcion, porcion.cantidad, porcion.precio)')
+                                md-checkbox(ng-click='addPorciones(porcion)', ng-model='porcion.active')
+
+        md-button.md-fab.md-primary.btnfab-botton-right(aria-label='add', ng-click="showFactura(ev)")
+            md-tooltip(md-direction='left') Registrar Venta
+            md-icon add_shopping_cart

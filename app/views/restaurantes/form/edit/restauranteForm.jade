@@ -1,0 +1,53 @@
+//
+   Created by Ricardo on 14/06/2016.
+
+md-dialog(layout="column", flex-xs="100",flex-gt-sm="50", style="height: 85%;")
+    md-toolbar.color-back.md-toolbar-tools
+        h2 Editar Restaurante
+        span(flex)
+        md-button.md-icon-button(ng-click="cancel()")
+            md-icon close
+
+    form.widht-all.over-scroll-y(name='restauranteForm', layout="column")
+        md-input-container.md-block
+            label Nombre
+            input(name='nombre', ng-model='restauranteUpdate.nombreRestaurante',md-maxlength='100', required, md-no-asterisk, ng-pattern='/^[A-Za-z0-9]/')
+            div(ng-messages='restauranteForm.nombre.$error')
+                div(ng-message='required')
+                    | Campo requerido.
+                div(ng-message='md-maxlength')
+                    | Máximo 100 Caracteres.
+                div(ng-message='pattern')
+                    | Solo caracteres Alfanuméricos.
+
+        md-input-container
+            label Ciudad
+            md-select(ng-model='restauranteUpdate.idCiudad')
+                md-option(ng-value='ciudad.idCiudad', ng-repeat='ciudad in ciudades') {{ ciudad.nombreCiudad }}
+
+        md-input-container.md-block
+            label Dirección
+            input(name='direccion', ng-model='restauranteUpdate.direccion', required, md-no-asterisk)
+            div(ng-messages='restauranteForm.direccion.$error')
+                div(ng-message='required')
+                    | Campo requerido.
+
+        md-input-container.md-block
+            label Barrio
+            input(name='barrio', ng-model='restauranteUpdate.barrio',md-maxlength='100', required, md-no-asterisk, ng-pattern='/^[A-Za-z0-9]/')
+            div(ng-messages='restauranteForm.barrio.$error')
+                div(ng-message='required')
+                    | Campo requerido.
+                div(ng-message='md-maxlength')
+                    | Máximo 100 Caracteres.
+                div(ng-message='pattern')
+                    | Solo caracteres Alfanuméricos.
+
+        md-input-container.md-block
+            label Telefono
+            input(name='telefono', ng-model='restauranteUpdate.telefono', required, md-no-asterisk)
+            div(ng-messages='restauranteForm.telefono.$error')
+                div(ng-message='required')
+                    | Campo requerido.
+
+        md-button.md-raised.md-primary.width-all(ng-click='actualizarRestaurante()') Editar Restaurante

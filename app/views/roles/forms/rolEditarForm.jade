@@ -1,0 +1,15 @@
+//
+   Created by Esleider A Tafur on 15/06/2016.
+
+md-dialog(aria-label='Editar Rol', ng-cloak)
+    form(ng-controller='FormRolController', name='formRol')
+        md-toolbar.color-back
+            .md-toolbar-tools
+                h2 Editar Rol
+                span(flex)
+                md-button.md-icon-button(ng-click='cancel(limpiarForm())')
+                    md-icon.md-primary(aria-label='Close dialog') close
+
+        include rolForm
+        md-dialog-actions
+            md-button(ng-click='answer(editarRol())') Aceptar

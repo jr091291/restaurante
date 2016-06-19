@@ -1,0 +1,37 @@
+{
+  "base_app":"./app",
+  "dir":{
+    "public": "./app/public/",
+    "stylesheet": "./app/public/stylesheet/",
+    "script": "./app/public/javascript/",
+    "angular":"./app/angular/",
+    "view": "./app/view"
+  },
+  "jsShint":[
+    "./app/public/scripts/**/*.js",
+    "./app/angular/**/*.js"
+  ],
+  "dest":{
+    "public": "./src/public/",
+    "stylesheet": "./src/public/stylesheet/",
+    "script": "./src/public/javascript/",
+    "angular":"./src/angular/",
+    "jade": "./src/",
+    "importants": [
+      "./src/config.js"
+    ]
+  },
+  "exclude":[
+    "!app/**/*.min.scss",
+    "!app/**/*.min.js",
+    "!app/lib/**/*.js",
+    "!app/lib/**/*.css"
+  ],
+  "serve":{
+    "prod_dir": "./src",
+    "desp_dir": "./dist",
+    "base":"http://localhost:3000",
+    "host":"localhost",
+    "port":3000
+  }
+}

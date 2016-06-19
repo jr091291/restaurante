@@ -1,0 +1,46 @@
+//
+   Created by Ricardo on 29/05/2016.
+doctype html
+html(lang='es', ng-app='myApp')
+    head
+        title Restaurant Control
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+        link(rel = 'icon', type = 'image/ico', href ='favicon.ico')
+        link(href = " https://fonts.googleapis.com/icon?family=Material+Icons " rel = "stylesheet")
+        link(href ='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600', rel='stylesheet', type='text/css')
+
+        // build:css public/style.min.css
+        // bower:css
+        // endbower
+        // inject:css
+        // endinject
+        // endbuild
+
+    body
+        //if lt IE 9
+                p
+                    Su Navegador Se Encuentra
+                    strong Opsoleto
+                    | .
+                    |         Por Favor
+                    a(href='http://browsehappy.com/') Actualizar Navegador
+                    |  Para Una Mejor Experiencia.
+
+
+
+        div#content(ng-view,ng-cloak)
+
+        // build:js public/libs.min.js
+        // bower:js
+        // endbower
+        // endbuild
+        // build:js public/app.min.js
+        // importants:js
+        // endinject
+        // angular:js
+        // endinject
+        // inject:js
+        // endinject
+        // endbuild
+

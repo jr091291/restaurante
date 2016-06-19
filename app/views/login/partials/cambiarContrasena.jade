@@ -1,0 +1,33 @@
+//
+   Created by Ricardo on 14/06/2016.
+extends ../../template
+block content
+    .center.color-back(layout-padding, layout="column", layout-align="center center", ng-cloak, ng-controller='PasswordController')
+        md-content.width-70(style="overflow-x:hidden")
+            md-toolbar.color-back.md-toolbar-tools
+                h2 Actualizar Contraseña
+
+            form.widht-all(name='contrasenaForm', layout-padding)
+                md-input-container.md-block
+                    label Contraseña Actual
+                    input(name='oldPass', ng-model="usuario.oldPassword", type="password", md-maxlength='20', required='', md-no-asterisk='')
+                    md-icon lock open
+                    div(ng-messages='contrasenaForm.oldPass.$error')
+                        div(ng-message='required') Campo requerido.
+
+                md-input-container.md-block
+                    label Nueva Contraseña
+                    input(name='newPass', ng-model="usuario.newPassword", type="password", md-maxlength='20', ng-pattern="/^[a-zA-Z0-9_]{8,}$/", required='', md-no-asterisk='')
+                    md-icon lock
+                    div(ng-messages='contrasenaForm.newPass.$error')
+                        div(ng-message='pattern') La Contraseña es requerida, debe tener al menos 8 caracteres alfanuméricos.
+                        div(ng-message='required') Campo requerido.
+
+                md-input-container.md-block
+                    label Repita Contraseña
+                    input(name='repeatPass', ng-model="usuario.newPassword2", type="password" , md-maxlength='20', required='', md-no-asterisk='')
+                    md-icon lock
+                    div(ng-messages='contrasenaForm.repeatPass.$error')
+                        div(ng-message='required') Campo requerido.
+
+                md-button.md-raised.md-primary.width-all(ng-click='cambiarPassword()') Actualizar

@@ -1,0 +1,37 @@
+
+//
+   Created by Ricardo on 02/06/2016.
+div(style="height: 100%;",ng-controller='TemplateController', layout='column', ng-cloak)
+    md-toolbar.md-hue-2.md-toolbar-tools.color-back.color-back-hover
+        md-button.md-icon-button(ng-click='openLeftMenu()')
+            md-icon menu
+        h1 Bienvenido {{ usuario}}
+        span(flex)
+        md-menu-bar
+            md-menu
+                button(style="all: initial",ng-click='$mdOpenMenu()')
+                    md-icon more_vert
+                md-menu-content
+                    md-menu-item(ng-if="idRol == '1'")
+                        md-menu-item
+                            md-menu
+                                md-button(ng-click='$mdOpenMenu()') Seleccionar Restaurante
+                                md-menu-content
+                                    md-menu-item(ng-repeat="restaurante in restaurantes")
+                                        md-button(ng-click="selectRestaurant(restaurante, $event)") {{ restaurante.nombreRestaurante }}
+
+                    md-menu-divider
+                    md-menu-item
+                        md-button(ng-click='logout()')
+                            | Cerrar Sessión
+    md-sidenav.md-sidenav-left.over-scroll-y(md-component-id='left', md-whiteframe="4")
+        div
+            img.md-avatar.navbar-img(src="public/imagen/img_productos/desayuno.jpg")
+        md-list
+            div.md-3-line(ng-repeat='element in navBarMenu')
+                md-subheader.md-no-sticky(ng-show="idRol == 1 || (idRol == 2 && (element.id == 1 || element.id == 3 || element.id == 4))") {{ element.title }}
+                md-list-item(ng-repeat="item in element.items")
+                    md-icon.navbar-text-items.animate-icon-rotate(, ng-show="idRol == 1 || (idRol == 2 && (item.id == '1' || item.id == '4' || item.id == '6'))") {{ item.icon }}
+                    a.navbar-text-items(flex, ng-href="{{ item.link }}", ng-show="idRol == 1 || (idRol == 2 && (item.id == '1' || item.id == '4' || item.id == '6'))") {{ item.text }}
+
+    block content

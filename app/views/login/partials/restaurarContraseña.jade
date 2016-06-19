@@ -1,0 +1,16 @@
+//
+   Created by Ricardo on 02/06/2016.
+md-dialog(layout="column", layout-padding)
+    h3.color-letter Recuperar Contraseña.
+    span Por favor ingrese su dirección de correo.
+    form(name='newPassForm')
+        md-input-container.md-block
+            label E-mail
+            input(name='email',autofocus, ng-model="user.email", md-maxlength='120', ng-pattern="/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/", required='', md-no-asterisk='')
+            md-icon perm_identity
+            div(ng-messages='newPassForm.email.$error')
+                div(ng-message='pattern') Ingrese una dirección de correo valida.
+                div(ng-message='md-maxlength') Solo se permiten 120 caracteres.
+                div(ng-message='required') Campo requerido.
+
+        md-button.md-raised.md-primary.width-all Enviar Solicitud

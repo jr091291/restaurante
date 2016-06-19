@@ -1,0 +1,17 @@
+//
+   Created by Esleider A Tafur on 16/06/2016.
+
+div
+    md-dialog-content(layout='column', layout-padding)
+        div
+            md-input-container.md-block
+                label Descripción
+                input(type='textarea' md-maxlength='15', required, md-no-asterisk, name='descripcion', ng-model='gastos.gasto.descripcionGasto')
+                div(ng-messages='formGasto.descripcion.$error')
+                    div(ng-message='required') Este campo es requerido.
+                    div(ng-message='md-maxlength') El nombre no debe pasar los 15 caracteres.
+            md-input-container.md-block(md-align='center center')
+                label Costo
+                input(required, name='costo', ng-model='gastos.gasto.costo')
+                div(ng-messages='formGasto.costo.$error')
+                    div(ng-message='required') Este campo es requerido.

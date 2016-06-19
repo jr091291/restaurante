@@ -1,0 +1,45 @@
+//
+   Created by Ricardo on 31/05/2016.
+form(name='bebidasForm')
+    input(type="hidden", name="bebida")
+
+    md-input-container.md-block
+        label Nombre
+        input(md-maxlength='100', required, md-no-asterisk, name='nombre', ng-model='bebida.nombreBebida')
+        div(ng-messages='bebidasForm.nombre.$error')
+            div(ng-message='required') Campo requerido.
+            div(ng-message='md-maxlength') Máximo 100 Caracteres.
+
+    md-input-container.md-block
+        label Tamaño
+        input(required, type='text', name='tamano', ng-model='bebida.tamano', min='1')
+        div(ng-messages='bebidasForm.tamano.$error', multiple)
+            div(ng-message='required')
+                | Campo Requerido
+            div(ng-message='min')
+                | Ingrese un valor positivo.
+
+    md-input-container.md-block
+        label Precio
+        input(required, type='number', name='precio', ng-model='bebida.precio', step="0.01", min='50', ng-pattern='/^[0-9,]/')
+        div(ng-messages='bebidasForm.precio.$error', multiple)
+            div(ng-message='required')
+                | Campo Requerido
+            div(ng-message='min')
+                | Ingrese un valor positivo.
+            div(ng-message='pattern')
+                | Solo caracteres numéricos (33,2).
+
+    md-input-container.md-block
+        label Descripción
+        textarea(name='descripcion', ng-model='bebida.descripcion', md-maxlength ='200', md-no-asterisk, md-no-autogrow)
+        div(ng-messages='bebidasForm.descripcion.$error', multiple)
+            div(ng-message='md-maxlength')
+                | Máximo 200 Caracteres.
+
+    md-input-container.md-block
+        label Imagen
+        input(name='imagen', type="file", file-model='bebida.imagen')
+
+
+    md-button.md-raised.md-primary.width-all(ng-click="registrarBebida()") Registrar

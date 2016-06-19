@@ -1,0 +1,14 @@
+//
+   Created by Esleider A Tafur on 9/06/2016.
+md-dialog(aria-label='Crear Usuario', ng-cloak='')
+    form(ng-controller='FormUserController', name='formUser')
+        md-toolbar.color-back
+            .md-toolbar-tools
+                h2 Crear Usuario {{usuarios.usuario.nombres}} {{usuarios.usuario.apellidos}}
+                span(flex='')
+                md-button.md-icon-button(ng-click='cancel(limpiarForm())')
+                    md-icon.md-primary(aria-label='Close dialog') close
+
+        include usuarioForm
+        md-dialog-actions
+            md-button(ng-click='answer(crearUsuario())') Aceptar

@@ -1,0 +1,15 @@
+//
+   Created by Esleider A Tafur on 16/06/2016.
+
+md-dialog(aria-label='Editar Gasto', ng-cloak)
+    form(ng-controller='FormGastoController', name='formGasto')
+        md-toolbar.color-back
+            .md-toolbar-tools
+                h2 Editar Gasto
+                span(flex)
+                md-button.md-icon-button(ng-click='cancel(limpiarForm())')
+                    md-icon.md-primary(aria-label='Close dialog') close
+
+        include gastoForm
+        md-dialog-actions
+            md-button(ng-click='answer(editarGasto())') Aceptar

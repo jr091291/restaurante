@@ -1,0 +1,35 @@
+//
+   Created by Esleider A Tafur on 6/06/2016
+div
+    md-dialog-content(layout='column', layout-padding)
+        div
+            md-input-container.md-block
+                label Identificación
+                input(md-maxlength='10', required, md-no-asterisk, name='identificacion', ng-model='usuarios.usuario.identificacion')
+                div(ng-messages='formUser.identificacion.$error')
+                    div(ng-message='required') Este campo es requerido.
+                    div(ng-message='md-maxlength') Su identifiación no debe pasar los 10 caracteres.
+        div(layout-gt-sm="" layout-padding)
+            md-input-container.md-block(md-align='center center')
+                label Nombres
+                input(required, name='nombres', ng-model='usuarios.usuario.nombres')
+                div(ng-messages='formUser.nombres.$error')
+                    div(ng-message='required') Este campo es requerido.
+            md-input-container.md-block(md-align='center center')
+                label Apellidos
+                input(required, name='apellidos', ng-model='usuarios.usuario.apellidos')
+                div(ng-messages='formUser.apellidos.$error')
+                    div(ng-message='required') Este campo es requerido.
+        div
+            md-input-container.md-block
+                label Email
+                input(required, type='email', name='email', ng-model='usuarios.usuario.email', minlength='10', maxlength='100', ng-pattern='/^.+@.+\..+$/')
+                div(ng-messages='formUser.email.$error', role='alert')
+                    div(ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']")
+                        | Su email debe estar entre 10 and 200 caracteres y verse como una dirección email.
+            md-input-container.md-block(ng-controller='RolesController')
+                label Cargo
+                md-select(ng-model='usuarios.usuario.idRol', md-on-open='cargarRoles()')
+                    md-option(ng-value='rol.idRol', ng-repeat='rol in roles.lista', ng-hide="rol.idRol == usuarios.usuario.idRol") {{rol.nombreRol}}
+
+

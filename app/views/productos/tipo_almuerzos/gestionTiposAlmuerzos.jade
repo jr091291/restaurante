@@ -1,0 +1,30 @@
+//
+   Created by Esleider A Tafur on 16/06/2016.
+
+extends ../../template
+block content
+    #windowTipoAlmuerzos.center.color-back(ng-controller='TipoAlmuerzoController',layout-padding, layout="column", layout-align="center center", ng-cloak)
+        md-toolbar.md-tall.color-back-second.width-70
+            h1.md-toolbar-tools.color-back Tipos de Almuerzo
+        // panel de filtrado
+        md-toolbar.color-back-second.md-scroll-shrink.width-70(layout="row",layout-pading, layout-sm="colunm")
+            div.width-70
+                md-input-container.md-block
+                    label Filtrar
+                    input(type='text', autofocus, ng-model='searchText')
+                    md-icon.md-primary search
+            div
+                section(layout='row', layout-sm='column', layout-align='center center', layout-wrap)
+                    md-button.md-fab.color-back(layout-align='center center', ng-click='showCreate($event)')
+                        md-tooltip(md-direction='right') Nuevo Tipo de Almuerzo
+                        md-icon.md-light.md-48 add
+        md-content.width-70.height-70(layout-pading)
+            md-list(ng-repeat='itemtipoalmuerzo in tiposAlmuerzo.lista | filter:searchText')
+                md-list-item.md-3-line.md-list.md-list-user(ng-dblclick='showEdit($event, itemtipoalmuerzo)')
+                    .md-list-item-text
+                        md-tooltip(md-direction='top') Presione doble click para editar
+                        h3 {{itemtipoalmuerzo.nombreTipoAlmuerzo}}
+                    section(layout='row', layout-sm='column', layout-align='center center', layout-wrap)
+                        md-button.md-fab.BtnWrang.md-secondary(layout-align='center center',ng-click='showConfirm($event)')
+                            md-tooltip(md-direction='left') Eliminar Tipo de Almuerzo
+                            md-icon.md-light.md-48 delete sweep

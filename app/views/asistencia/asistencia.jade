@@ -1,0 +1,33 @@
+//Created by Sandra Suarez on 04/06/2016.
+extends ../template
+block content
+    #windowProductos.center.color-back(layout-padding, layout="column", layout-align="center center", ng-cloak)
+        md-content.width-70(ng-controller='AsistenciaController', flex-gt-sm="99", style="overflow-x:hidden")
+
+            h1 Asistencia Empleados.
+
+            div( layout="row", layout-sm="colunm", layout-align="center" flex)
+                md-input-container.md-block
+                    label Filtrar
+                    input(type='text', autofocus, ng-model="searchEmpleado")
+                    md-icon.md-primary search
+
+            md-subheader Lista De Asistencia Empleados
+
+            div(layout='column')
+                md-checkbox(ng-model='selectAll', ng-change='addAllEmpleados()') Seleccionar Todos
+
+                md-list(layout-padding)
+                    md-list-item.md-3-line(ng-repeat='empleado in empleados | filter: searchEmpleado', ng-click="null")
+                        md-checkbox(ng-model='empleado.active' ng-click='addEmpleado(empleado)')
+                        .md-list-item-text
+                            h3.color-letter {{empleado.nombres}} {{empleado.apellidos}}
+                            h4 Cargo: {{empleado.nombreRol}}
+                            p  Email: {{empleado.email}}
+                        div.md-secondary
+                            label Pago del dia:
+                            input(type='number', ng-model='empleado.pago', ng-change='updatePago(empleado)', ng-disabled='empleado.active === false')
+
+            div(layout='row', layout-align='center')
+                md-button.md-raised.md-primary(ng-click='registrarAsistencia()') Registrar Asistencia
+                md-button.md-raised.md-primary Cancelar

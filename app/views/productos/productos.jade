@@ -1,0 +1,96 @@
+//
+   Created by Ricardo on 30/05/2016.
+extends ../template
+block content
+    #windowProductos.center.color-back(layout-padding, layout="column", layout-align="center center", ng-cloak, ng-controller="ProductosController")
+        md-content.width-70(flex-gt-sm="99", style="overflow-x:hidden")
+            h1 Catalogo de productos.
+
+            // panel de filtrado
+            div(layout="row", layout-sm="colunm", layout-align="center" flex)
+                md-input-container.md-block
+                    label Filtrar
+                    input(type='text', ng-model='filtro')
+                    md-icon.md-primary search
+                    md-button.md-primary.right(ng-click="showCreateProduct($event)") Agregar producto
+
+            // Panel de productos
+            div(ng-cloak)
+                section
+                    md-subheader.md-primary Almuerzos
+                    h2(ng-if="errorAlmuerzos || errorAlmuerzos.length === 0", style="padding-left:30px") No se encontraron Almuerzos registrados.
+                    md-list(ng-if="almuerzos", layout-padding)
+                        md-list-item.md-3-line(id="almuerzo.idAlmuerzo", ng-repeat='almuerzo in almuerzos | orderBy:"acompanamiento" | filter:filtro', ng-click="null")
+                            img.md-avatar(ng-src='{{urlImagen}}{{almuerzo.imagen}}', alt='img')
+                            .md-list-item-text
+                                h3.color-letter {{almuerzo.nombreTipoAlmuerzo}} - {{ almuerzo.acompanamiento }}
+                                h4 precio: {{almuerzo.precio}}
+                                p  código: {{almuerzo.idAlmuerzo}}
+                            section(layout='row', layout-sm='column', layout-align='center center', layout-wrap)
+                                md-button.md-fab.BtnNormal(layout-align='center center',ng-click="showEditAlmuerzo(almuerzo, $even)")
+                                    md-tooltip(md-direction='left') Editar Almuerzo
+                                    md-icon.md-light.md-48 create
+                            section(layout='row', layout-sm='column', layout-align='center center', layout-wrap)
+                                md-button.md-fab.BtnWrang(layout-align='center center',ng-click='')
+                                    md-tooltip(md-direction='right') Eliminar Almuerzo
+                                    md-icon.md-light.md-48 delete sweep
+
+
+                section
+                    md-subheader.md-accent Bebidas
+                    h2(ng-if="errorBebidas || bebidas.length === 0", style="padding-left:30px") No se encontraron bebidas registradas.
+                    md-list(ng-if="bebidas", layout-padding)
+                        md-list-item.md-3-line(id="bebida.idBebida", ng-repeat='bebida in bebidas | orderBy:"nombreBebida" | filter:filtro', ng-click="null")
+                            img.md-avatar(ng-src='{{urlImagen}}{{bebida.imagen}}', alt='img}')
+                            .md-list-item-text
+                                h3.color-letter {{bebida.nombreBebida}}
+                                h4 precio: {{bebida.precio}}
+                                p  código: {{bebida.idBebida}}
+                            section(layout='row', layout-sm='column', layout-align='center center', layout-wrap)
+                                md-button.md-fab.BtnNormal(layout-align='center center', ng-click="showEditBebida(bebida, $even)")
+                                    md-tooltip(md-direction='left') Editar Bebidas
+                                    md-icon.md-light.md-48 create
+                            section(layout='row', layout-sm='column', layout-align='center center', layout-wrap)
+                                md-button.md-fab.BtnWrang(layout-align='center center')
+                                    md-tooltip(md-direction='right') Eliminar Bebidas
+                                    md-icon.md-light.md-48 delete sweep
+
+
+                section
+                    md-subheader.md-primary Desayunos
+                    h2(ng-if="errorDesayunos || desayunos.length === 0", style="padding-left:30px") No se encontraron desayunos registrados.
+                    md-list(ng-if="desayunos", layout-padding)
+                        md-list-item.md-3-line(id="desayuno.idDesayuno", ng-repeat='desayuno in desayunos | orderBy: "nombreDesayuno" | filter:filtro', ng-click="null")
+                            img.md-avatar(ng-src='{{urlImagen}}{{desayuno.imagen}}', alt='img}')
+                            .md-list-item-text
+                                h3.color-letter {{desayuno.nombreDesayuno}}
+                                h4 precio: {{desayuno.precio}}
+                                p  código: {{desayuno.idDesayuno}}
+                            section(layout='row', layout-sm='column', layout-align='center center', layout-wrap)
+                                md-button.md-fab.BtnNormal(layout-align='center center', ng-click="showEditDesayuno(desayuno, $even)")
+                                    md-tooltip(md-direction='left') Editar Desayuno
+                                    md-icon.md-light.md-48 create
+                            section(layout='row', layout-sm='column', layout-align='center center', layout-wrap)
+                                md-button.md-fab.BtnWrang(layout-align='center center')
+                                    md-tooltip(md-direction='right') Eliminar Desayuno
+                                    md-icon.md-light.md-48 delete sweep
+
+                section
+                    md-subheader.md-accent Porciones
+                    h2(ng-if="errorPorciones || porciones.length === 0", style="padding-left:30px") No se encontraron porciones registradas.
+                    md-list(ng-if="porciones", layout-padding)
+                        md-list-item.md-3-line(id="porcion.idPorcion", ng-repeat='porcion in porciones | orderBy: "nombrePorcion" | filter:filtro',ng-click="null")
+                            img.md-avatar(ng-src='{{urlImagen}}{{porcion.imagen}}', alt='img}')
+                            .md-list-item-text
+                                h3.color-letter {{porcion.nombrePorcion}}
+                                h4 precio: {{porcion.precio}}
+                                p  código: {{porcion.idPorcion}}
+                            section(layout='row', layout-sm='column', layout-align='center center', layout-wrap)
+                                md-button.md-fab.BtnNormal(layout-align='center center', ng-click="showEditPorciones(porcion, $even)")
+                                    md-tooltip(md-direction='left') Editar Procion
+                                    md-icon.md-light.md-48 create
+                            section(layout='row', layout-sm='column', layout-align='center center', layout-wrap)
+                                md-button.md-fab.BtnWrang(layout-align='center center')
+                                    md-tooltip(md-direction='right') Eliminar Porcion
+                                    md-icon.md-light.md-48 delete sweep
+

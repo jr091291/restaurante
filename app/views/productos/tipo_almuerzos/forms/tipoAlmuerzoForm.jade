@@ -1,0 +1,12 @@
+//
+   Created by Esleider A Tafur on 16/06/2016.
+
+div
+    md-dialog-content(layout='column', layout-padding)
+        div
+            md-input-container.md-block
+                label Nombre
+                input(md-maxlength='30', required, md-no-asterisk, name='nombre', ng-model='tiposAlmuerzo.tipoAlmuerzo.nombreTipoAlmuerzo')
+                div(ng-messages='formTipoAlmuerzo.nombre.$error')
+                    div(ng-message='required') Este campo es requerido.
+                    div(ng-message='md-maxlength') El nombre para este almuerzo no debe pasar los 30 caracteres.

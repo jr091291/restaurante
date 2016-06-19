@@ -1,0 +1,37 @@
+//
+   Created by Ricardo on 13/06/2016.
+
+form.widht-all(name='porcionesForm', layout="column")
+    md-input-container.md-block
+        label Nombre
+        input(name='nombre', ng-model='porcion.nombrePorcion',md-maxlength='100', required, md-no-asterisk, ng-pattern='/^[A-Za-z0-9]/')
+        div(ng-messages='porcionesForm.nombre.$error')
+            div(ng-message='required')
+                | Campo requerido.
+            div(ng-message='md-maxlength')
+                | Máximo 100 Caracteres.
+            div(ng-message='pattern')
+                | Solo caracteres Alfanuméricos.
+
+    md-input-container.md-block
+        label Precio
+        input(name='precio', ng-model='porcion.precio', required, type='number', step="0.01", min='50', ng-pattern='/^[0-9,]/')
+        div(ng-messages='porcionesForm.precio.$error', multiple)
+            div(ng-message='required')
+                | Campo Requerido
+            div(ng-message='min')
+                | Ingrese un valor positivo.
+            div(ng-message='pattern')
+                | Solo caracteres numéricos (33,2).
+
+    md-input-container.md-block
+        label Descripción
+        textarea(name='descripcion', ng-model='porcion.descripcion', md-maxlength ='200', md-no-asterisk, md-no-autogrow)
+        div(ng-messages='porcionesForm.descripcion.$error', multiple)
+            div(ng-message='md-maxlength')
+                | Máximo 200 Caracteres.
+    md-input-container.md-block
+        label Imagen
+        input(name='imagen', type="file", file-model='porcion.imagen')
+
+    md-button.md-raised.md-primary.width-all(ng-click="registrarPorcion()") Registrar

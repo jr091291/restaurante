@@ -1,0 +1,61 @@
+//
+   Created by Ricardo on 15/06/2016.
+
+md-dialog(layout="column", layout-padding, flex ="90", style="min-height: 85%;")
+       h1 Facturación de productos.
+           //PANEL DE VENTA
+           section(style="font-size: 1.5rem;", layout="column", layout-gt-sm="row")
+               fieldset.standard(flex-gt-sm="70", flex="100")
+                   h3.color-letter Seleccionados
+                   md-table-container
+                       table(style="width: 100%; text-align: center;")
+                           thead
+
+                               tr
+                                   th Codigo
+                                   th Cantidad
+                                   th Nombre Producto
+                                   th Precio
+                                   th Monto
+
+                           //tr(ng-repeat="pro in productos.productos")
+                           tbody
+
+                                tr(ng-repeat='producto in productos.productos')
+                                    td {{producto.idProducto}}
+                                    td {{producto.cantidad}}
+                                    td {{producto.nombreProducto}}
+                                    td {{producto.precio}}
+                                    td {{producto.total}}
+
+               fieldset.standard(flex-gt-sm="30", flex="100")
+                   md-input-container.md-block
+                       label SubTotal
+                       input(name='subTotal', type='number',readonly='readonly', ng-model='subtotal')
+
+                   md-input-container.md-block
+                       label Iva
+                       input(name='Iva', type='number', readonly='readonly', ng-model='iva')
+
+                   md-input-container.md-block
+                       label Total
+                       input(name='Total', type='number', readonly='readonly', ng-model='total')
+
+                   md-input-container.md-block
+                       label Efectivo
+                       input(name='efectivo', type='number', min ="total", ng-model='efectivo', ng-change='changeEfectivo()')
+
+                   md-input-container.md-block
+                       label Cambio
+                       input(name='cambio', type='number', readonly='readonly' ,ng-model='cambio')
+
+                   md-input-contriner.md-block
+                       label Cliente
+                       input(name='cliente', ng-model='productos.cliente', type='text')
+                   //md-button.md-raised.md-primary.width-all(ng-click='registrarVenta()') Registrar Venta
+                   md-button.md-raised.md-primary.width-all(ng-click='registrarVenta()') Registrar Venta
+
+
+
+
+

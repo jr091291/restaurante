@@ -1,0 +1,34 @@
+//
+   Created by Ricardo on 6/06/2016.
+extends ../template
+block content
+    .center.color-back(layout-padding, layout="column", layout-align="center center", ng-cloak, ng-controller="RestaurantesController")
+        md-content.width-70(flex-gt-sm="99", style="overflow-x:hidden")
+            h1 Gestion de restaurantes.
+
+            // panel de filtrado
+            div(layout="row", layout-sm="colunm", layout-align="center" flex)
+                md-input-container.md-block
+                    label Filtrar
+                    input(type='text', ng-model='searchRestaurante')
+                    md-icon.md-primary search
+
+            // Panel de productos
+            div(ng-cloak)
+                md-toolbar.md-theme-light
+                    h2.md-toolbar-tools.color-back Gestion de Restaurantes
+
+                section
+                    md-list(layout-padding)
+                        md-list-item.md-3-line(ng-repeat='restaurante in restaurantes | filter:searchRestaurante', ng-click="null")
+                            .md-list-item-text
+                                h3 {{ restaurante.nombreRestaurante }} ( {{ restaurante.nombreCiudad }} )
+                                h4 {{ restaurante.direccion }} ( {{ restaurante.barrio }} )
+                                p {{ restaurante.telefono }}
+
+                            div(layout='row', layout-sm='column', layout-align='center center', layout-wrap)
+                                md-button.md-fab.BtnNormal(layout-align='center center', ng-click="showEditRestaurante(restaurante, $even)")
+                                    md-tooltip(md-direction='left') Editar Restaurante
+                                    md-icon.md-light.md-48 create
+
+

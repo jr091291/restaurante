@@ -1,0 +1,17 @@
+//
+   Created by Esleider A Tafur on 15/06/2016.
+
+div
+    md-dialog-content(layout='column', layout-padding)
+        div
+            md-input-container.md-block
+                label Nombre
+                input(md-maxlength='15', required, md-no-asterisk, name='nombre', ng-model='roles.rol.nombreRol')
+                div(ng-messages='formRol.nombre.$error')
+                    div(ng-message='required') Este campo es requerido.
+                    div(ng-message='md-maxlength') El nombre no debe pasar los 15 caracteres.
+            md-input-container.md-block(md-align='center center')
+                label Pago
+                input(required, name='pago', ng-model='roles.rol.pago')
+                div(ng-messages='formRol.pago.$error')
+                    div(ng-message='required') Este campo es requerido.

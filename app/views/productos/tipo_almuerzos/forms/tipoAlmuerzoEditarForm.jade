@@ -1,0 +1,14 @@
+//
+   Created by Esleider A Tafur on 16/06/2016.
+
+md-dialog(aria-label='Editar Tipo de Almuerzo', ng-cloak='')
+    form(ng-controller='FormTipoAlmuerzoController', name='formTipoAlmuerzo')
+        md-toolbar.color-back
+            .md-toolbar-tools
+                h2 Editar Tipo de Almuerzo
+                span(flex)
+                md-button.md-icon-button(ng-click='cancel(limpiarForm())')
+                    md-icon.md-primary(aria-label='Close dialog') close
+        include tipoAlmuerzoForm
+        md-dialog-actions
+            md-button(ng-click='answer(editarTipoAlmuerzo())') Aceptar

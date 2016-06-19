@@ -1,0 +1,54 @@
+//
+   Created by Ricardo on 31/05/2016.
+md-dialog(layout="column", flex-xs="100",flex-gt-sm="50", style="height: 85%;")
+    md-toolbar.color-back.md-toolbar-tools
+        h2 Editar Bebida
+        span(flex)
+        md-button.md-icon-button(ng-click="cancel()")
+            md-icon close
+
+    form.over-scroll-y(name='bebidasForm', layout-padding)
+        input(type="hidden", name="bebida")
+
+        md-input-container.md-block
+            label Nombre
+            input(md-maxlength='100', required, md-no-asterisk, name='nombre', ng-model='bebidaUpdate.nombreBebida')
+            div(ng-messages='bebidasForm.nombre.$error')
+                div(ng-message='required') Campo requerido.
+                div(ng-message='md-maxlength') Máximo 100 Caracteres.
+
+        md-input-container.md-block
+            label Tamaño
+            input(required, type='text', name='tamano', ng-model='bebidaUpdate.tamano', step="1/100",min='1', ng-pattern='/^[0-9]/')
+            div(ng-messages='bebidasForm.tamano.$error', multiple)
+                div(ng-message='required')
+                    | Campo Requerido
+                div(ng-message='min')
+                    | Ingrese un valor positivo.
+                div(ng-message='pattern')
+                    | Solo caracteres numéricos.
+
+        md-input-container.md-block
+            label Precio
+            input(required, type='number', name='precio', ng-model='bebidaUpdate.precio', step="0.01", min='50', ng-pattern='/^[0-9,]/')
+            div(ng-messages='bebidasForm.precio.$error', multiple)
+                div(ng-message='required')
+                    | Campo Requerido
+                div(ng-message='min')
+                    | Ingrese un valor positivo.
+                div(ng-message='pattern')
+                    | Solo caracteres numéricos (33,2).
+
+        md-input-container.md-block
+            label Descripción
+            textarea(name='descripcion', ng-model='bebidaUpdate.descripcion', md-maxlength ='200', md-no-asterisk, md-no-autogrow)
+            div(ng-messages='bebidasForm.descripcion.$error', multiple)
+                div(ng-message='md-maxlength')
+                    | Máximo 200 Caracteres.
+
+        md-input-container.md-block
+            label Imagen
+            input(name='imagen', type="file", file-model='bebidaUpdate.imagenUpdate')
+
+
+        md-button.md-raised.md-primary.width-all(ng-click="editarBebida()") Editar

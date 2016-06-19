@@ -1,0 +1,36 @@
+link(href="views/login/css/styles.css" , rel="stylesheet")
+#loginForm.center(ng-controller='LoginController',layout="row", layout-align="center center", ng-cloak)
+    div(layout="column", flex="90", flex-sm ="40", flex-md="30",flex-lg="25")
+        div(show-xs, hide-gt-xs)
+            h2(style="color:white").center-text Bienvenido, Gracias por preferirnos.
+
+        .banner(hide-xs)
+            h1(style="color:white") Bienvenido, Gracias por preferirnos.
+            h2(style="color:#AEA6E2") Inicia sesión para acceder al Sistema
+
+        section(md-whiteframe="5", style="background:white")
+            form(name='loginForm')
+                div(layout="row", layout-align="center center")
+                    img#logoLogin(src="/public/imagen/logo.png")
+
+                md-input-container.md-block
+                    label E-mail
+                    input(name='email',autofocus, ng-model="user.email", md-maxlength='120', ng-pattern="/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/", required='', md-no-asterisk='')
+                    md-icon perm_identity
+                    div(ng-messages='loginForm.email.$error')
+                        div(ng-message='pattern') Ingrese una dirección de correo valida.
+                        div(ng-message='md-maxlength') Solo se permiten 120 caracteres.
+                        div(ng-message='required') Campo requerido.
+
+
+                md-input-container.md-block
+                    label Contraseña
+                    input(name='pass', type="password" ,ng-model="user.password", md-maxlength='20', ng-pattern="/^[a-zA-Z0-9_]{8,}$/", required='', md-no-asterisk='')
+                    md-icon lock_outline
+                    div(ng-messages='loginForm.pass.$error')
+                        div(ng-message='pattern') La Contraseña es requerida, debe tener al menos 8 caracteres alfanuméricos.
+                        div(ng-message='required') Campo requerido.
+
+                md-button.md-raised.md-primary.width-all(ng-click="login()") Ingresar
+                a.link-small.right(ng-controller="DialogController", ng-click="showDialog($event,'views/login/partials/restaurarContraseña.html')")
+                    | ¿Olvide mi contraseña?

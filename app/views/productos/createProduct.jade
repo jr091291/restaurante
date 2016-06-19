@@ -1,0 +1,25 @@
+//
+   Created by Ricardo on 31/05/2016.
+md-dialog(layout="column", flex-xs="100",flex-gt-sm="70", style="min-height: 85%;")
+    md-toolbar.color-back.md-toolbar-tools
+        h2 Agregar Productos
+        span(flex)
+        md-button.md-icon-button(ng-click="cancel()")
+            md-icon close
+
+    md-tabs(md-dynamic-height, md-border-bottom)
+        md-tab(label='Almuerzos')
+            md-content.md-padding
+                include form/registrar/almuerzosForm
+
+        md-tab(label='Bebidas')
+            md-content.md-padding
+                include form/registrar/bebidasForm
+
+        md-tab(label='Desayunos')
+            md-content.md-padding
+                include form/registrar/desayunosForm
+
+        md-tab(label='Porciones')
+            md-content.md-padding
+                include form/registrar/porcionesForm

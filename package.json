@@ -1,0 +1,60 @@
+{
+  "name": "angular-base",
+  "private": true,
+  "devDependencies": {
+    "browser-sync": "^2.12.8",
+    "gulp": "^3.9.1",
+    "gulp-angular-filesort": "^1.1.1",
+    "gulp-angular-templatecache": "^1.8.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-cache": "^0.4.5",
+    "gulp-debug": "^2.1.2",
+    "gulp-htmlmin": "^2.0.0",
+    "gulp-if": "^2.0.1",
+    "gulp-imagemin": "^3.0.1",
+    "gulp-inject": "^4.1.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-load-plugins": "^1.2.2",
+    "gulp-minify": "0.0.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.1",
+    "gulp-sequence": "^0.4.5",
+    "gulp-uglify": "^1.5.3",
+    "gulp-uncss": "^1.0.5",
+    "gulp-useref": "^3.1.0",
+    "gulp-watch": "^4.3.5",
+    "jade": "^1.11.0",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0",
+    "run-sequence": "^1.2.1",
+    "wiredep": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "description": "Estructura Basica para un proyecto con angularJs, jade, sass",
+  "version": "0.0.5",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jr091291/restaurante.git"
+  },
+  "keywords": [
+    "angular",
+    "jade",
+    "sass",
+    "gulp"
+  ],
+  "author": "jose ricardo pedraza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jr091291/restaurante/issues"
+  },
+  "homepage": "https://github.com/jr091291/restaurante#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "wiredep": "^4.0.0"
+  }
+}
